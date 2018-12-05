@@ -8,12 +8,12 @@ Inspiration: Shameless MATLAB Port of Krishnamoorthy's "Two Poisson Means" fortr
 Original inspiration:  5. Two Poisson Means, 6. Power: Two Poisson Means from http://www.ucs.louisiana.edu/~kxk4695/StatCalc.htm
 
 Theory: Krishnamoorthy, K and Thomson, J. (2004) A more powerful test for comparing two Poisson means. Journal of Statistical Planning and Inference, 119, 249-267
-
 """
 
 
+
 # define Poisson E-test function
-def poissonEtest(k1, k2, n1 = 1, n2 = 1, d = 0, iside = 2):
+def Etest(k1, k2, n1 = 1, n2 = 1, d = 0, iside = 2):
     """
     Computes the p-value for the unconditional 'E-test' of difference between two Poisson means.
     k1: sample 1 count
@@ -30,6 +30,7 @@ def poissonEtest(k1, k2, n1 = 1, n2 = 1, d = 0, iside = 2):
     # Initialize stats under null hypothesis
     from scipy.stats import poisson
     import math
+    import numpy
 
     lambdaHatK = (k1+k2) / (n1+n2) - d * n1 / (n1+n2)
     varHat = ( k1 / (n1**2) + k2 / (n2**2) )
@@ -53,7 +54,7 @@ def poissonEtest(k1, k2, n1 = 1, n2 = 1, d = 0, iside = 2):
         """
         Carries out the pValue sum over i2
         """
-        #import numpy
+
         pi2 = pi2mode
 
         # first recursive series
